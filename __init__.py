@@ -43,7 +43,26 @@ def histogramme():
 def commits():
     return render_template('commits.html')
 
+@app.route('/api/commits_data')
+def commits_data():
+    url = 'https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits'
+    response = requests.get(url)
+    data = response.json()
 
+    # Extraire les minutes des dates de commit
+    minute_counter = Counter()
+    for commit in data:
+        try:
+            date_str = commit['commit']['author']['date']
+            date_obj = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%SZ')
+            minute = date_obj.minute
+            minute_counter[minute] += 1
+        except (KeyError, ValueError):
+            continue
+
+    # Convertir en liste de dicts pour le frontend
+    results = [{'minute': k, 'commits': v} for k, v in sorted(minute_counter.items())]
+    return jsonify(results)
 
 if __name__ == "__main__":
     app.run(debug=True)
