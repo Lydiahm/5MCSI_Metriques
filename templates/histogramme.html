@@ -1,9 +1,35 @@
-<!-- templates/histogramme.html -->
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>Histogramme - Températures de Tawarano</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #333;
+      }
+      h2 {
+        color: #4CAF50;
+        margin-bottom: 20px;
+      }
+      #chart_div {
+        width: 80%;
+        height: 500px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+    </style>
   </head>
   <body>
     <h2>Évolution des températures de la ville de Tawarano</h2>
@@ -24,24 +50,35 @@
 
             data.results.forEach(entry => {
               var date = new Date(entry.Jour * 1000);  // Conversion du Timestamp
-              chartData.addRow([date.toLocaleDateString(), entry.Température]);
+              chartData.addRow([date.toLocaleDateString(), entry.temp]);
             });
 
-            // Options de personnalisation du graphique
+            // Options du graphique à barres
             var options = {
               title: 'Évolution des températures de Tawarano',
-              chartArea: { width: '50%' },
+              chartArea: { width: '60%' },
               hAxis: {
-                title: 'Température',
-                minValue: 0
+                title: 'Température (°C)',
+                minValue: 0,
+                gridlines: { color: '#e0e0e0' },
+                textStyle: { color: '#555' }
               },
               vAxis: {
-                title: 'Date'
-              }
+                title: 'Date',
+                textStyle: { color: '#555' }
+              },
+              bars: 'vertical',  // Utilisation d'un histogramme vertical
+              colors: ['#4CAF50'], // Couleur des barres
+              animation: {
+                duration: 1000,
+                easing: 'out',
+              },
+              legend: { position: 'none' },
+              backgroundColor: '#f4f4f9', // Couleur d'arrière-plan
             };
 
             // Dessin du graphique
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart.draw(chartData, options);
           });
       }
