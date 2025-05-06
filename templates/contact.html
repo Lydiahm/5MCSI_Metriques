@@ -2,68 +2,108 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Contactez-moi</title>
+  <title>Contact | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #6dd5ed, #2193b0);
       margin: 0;
       padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
+      color: #fff;
     }
-    .container {
-      background-color: white;
+
+    .contact-container {
+      background-color: rgba(255, 255, 255, 0.05);
       padding: 40px;
       border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      width: 400px;
-      max-width: 90%;
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 90%;
+      max-width: 450px;
+      animation: fadeIn 1s ease-in-out;
     }
+
     h2 {
       text-align: center;
-      color: #2193b0;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      font-weight: 600;
     }
+
+    .input-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      color: #ccc;
+    }
+
     input, textarea {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-sizing: border-box;
-    }
-    button {
-      background-color: #2193b0;
-      color: white;
-      padding: 12px;
-      width: 100%;
+      padding: 12px 12px 12px 40px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background-color: #ff416c;
+      background-image: linear-gradient(to right, #ff4b2b, #ff416c);
+      color: #fff;
+      border-radius: 10px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: transform 0.2s;
     }
+
     button:hover {
-      background-color: #176b87;
+      transform: scale(1.03);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="contact-container">
     <h2>Contactez-moi</h2>
     <form>
-      <label for="prenom">Prénom</label>
-      <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
-
-      <label for="nom">Nom</label>
-      <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
-
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="prenom" placeholder="Prénom" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-user-circle"></i>
+        <input type="text" name="nom" placeholder="Nom" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-comment-dots"></i>
+        <textarea name="message" rows="4" placeholder="Votre message..." required></textarea>
+      </div>
       <button type="submit">Envoyer</button>
     </form>
   </div>
