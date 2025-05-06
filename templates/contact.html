@@ -6,6 +6,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -22,12 +26,12 @@
       background-color: rgba(255, 255, 255, 0.05);
       padding: 40px;
       border-radius: 15px;
-      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.18);
-      width: 93%;
-      max-width: 550px;
+      width: 90%;
+      max-width: 450px;
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -47,18 +51,19 @@
       top: 12px;
       left: 12px;
       color: #ccc;
+      font-size: 16px;
     }
 
     input, textarea {
       width: 100%;
-      padding: 12px 12px 12px 40px;
+      padding: 12px 12px 12px 38px;
       border: none;
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.1);
       color: #fff;
       font-size: 15px;
       outline: none;
-      transition: background 0.3s ease;
+      display: block;
     }
 
     input:focus, textarea:focus {
